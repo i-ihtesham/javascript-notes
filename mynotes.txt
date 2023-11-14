@@ -15,7 +15,43 @@ vi) undefined : represents a "value is not assigned". Serves as a default/initia
 vii) Symbols : defines unique indentfiers to objects
 viii) Object : represents complex data structures
 typeof : typeof(null) //object (Error in language)
+typeof function(){} == "function" // functions are treated specially
 
 4. alert, prompt, confirm
 prompt : gives a text to user and input field to enter text, if cancel is clicked "null" is returned
 cofirm : OK returns True, cancel returns False
+
+5. Type Conversions
+i) String : String(value)
+ii) Number : Number(value). Mathematical operations convert values to numbers. Rules:
+alert( "6" / "2" ); // 3, strings are converted to numbers
+Number(undefined) -> NaN
+Number(null) -> 0
+Number(true/false) -> 1/0
+Number(string) -> "123" = 123, "abc" = NaN, "" = 0
+iii) Boolean : Boolean(value)
+Boolean(0/null/undefined/NaN/"") -> false
+Boolean(any other value) -> true
+
+6. Concatenation
+Note that if any of the operands is a string, then the other one is converted to a string too.
+alert(1 + '2') //12
+alert(2 + 2 + '1' ); // "41" and not "221"
+alert('1' + 2 + 2); // "122" and not "14"
++ is the only operator that works this way, other operators always convert operands to numbers
+alert( 6 - '2' ); // 4, converts '2' to a number
+alert( '6' / '2' ); // 3, converts both operands to numbers
+
+7. Just read Comparison chapter again in free time. 
+When comparing values of different types, JavaScript converts the values to numbers.
+== -> does not check the date type. Performs type conversion to Number
+alert( 0 == false ); // true
+alert( '' == false ); // true
+=== -> checks the data type. No type conversions. Returns false if type are not equal
+The values null and undefined equal == each other and do not equal any other value.
+
+8. Logical operator
+|| -> returns the first thruthy value, otherwise the last operand.
+&& -> returns the first falsey value, otherwise the last operand.
+?? -> returns the fist argument if its not null/undefined, otherwise the second operand
+result = a ?? b; equivalent to result = (a !== null && a !== undefined) ? a : b;
