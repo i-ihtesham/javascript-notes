@@ -1,5 +1,21 @@
-Lesson 2.2 Code Structure
+1. Code Structure
 Summary: Always make sure to use semicolons at the end of statements. Sometimes javascript can intepret multiple statements as single statement and may produce error
 
-Lesson 2.3 "use strict"
+2. "use strict"
 Summary: In 2009 the introduction of ES5, introduced new features and modified some old features. In order to keep the old code running as it was, the new changes were disabled by default. The user needs to enable them explicitly to use them, by using the string "use strict" at the top of the script file.
+
+3. Data Types
+Eight data types in javascript, 7 primitive and 1 non-primitive(object):
+i) Number : represents int, float
+ii) BigInt : represents number of arbitrary length. Ends with 'n'.
+iii) String: sequence of characters, can be empty.
+iv) Boolean : True/False
+v) null : represents a value which is unknown, empty, nothing.
+vi) undefined : represents a "value is not assigned". Serves as a default/initial value to variables
+vii) Symbols : defines unique indentfiers to objects
+viii) Object : represents complex data structures
+typeof : typeof(null) //object (Error in language)
+
+4. alert, prompt, confirm
+prompt : gives a text to user and input field to enter text, if cancel is clicked "null" is returned
+cofirm : OK returns True, cancel returns False
