@@ -55,3 +55,23 @@ The values null and undefined equal == each other and do not equal any other val
 && -> returns the first falsey value, otherwise the last operand.
 ?? -> returns the fist argument if its not null/undefined, otherwise the second operand
 result = a ?? b; equivalent to result = (a !== null && a !== undefined) ? a : b;
+
+9. function
+A function with empty return or without return statement, returns undefined
+function doNothing() { /* empty */ }
+alert( doNothing() === undefined ); // true
+function doNothing() {return;}
+alert( doNothing() === undefined ); // true
+Callback function: functions are passed as arguments of another function and are expected to be called back later on.
+Arrow function: 
+let fun = (a,b) => a + b;
+let fun = function(a,b) {
+    return (a + b);
+}
+If there is only one argument parenthesis can be omitted.
+If there are no arguments, parenthesis is empty but must be present.
+If the expression at the right side of => is complex, we enclose it in {}, in such an explicit return must be written.
+let sum = (a, b) => {  // the curly brace opens a multiline function
+  let result = a + b;
+  return result; // if we use curly braces, then we need an explicit "return"
+};
