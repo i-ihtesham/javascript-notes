@@ -1,0 +1,60 @@
+Number:
+Math.floor() Rounds down: 3.1 becomes 3, and -1.1 becomes -2
+Math.ceil() Rounds up :3.1 becomes 4, and -1.1 becomes -1.
+Math.round() Rounds to the nearest integer: 3.1 becomes 3, 3.6 becomes 4, the middle case: 3.5 rounds up to 4 too.
+Math.trunc() Removes anything after the decimal point without rounding: 3.1 becomes 3, -1.1 becomes -1.
+toFixed(n) : The method toFixed(n) rounds the number to n digits after the point and returns a string representation of the result.
+let num = 12.36;
+alert( num.toFixed(1) ); // "12.4"
+Math.random() Returns a random number from 0 to 1 (not including 1).
+Math.max(a, b, c...) and Math.min(a, b, c...) : Returns the greatest and smallest from the arbitrary number of arguments.
+alert( Math.max(3, 5, -10, 0, 1) ); // 5
+alert( Math.min(1, 2) ); // 1
+Math.pow(n, power) Returns n raised to the given power.
+alert( Math.pow(2, 10) ); // 2 in power 10 = 1024
+
+String: they are immutable
+Getting a Substring
+str.substr(start , length)
+str.substring(start, end)
+str.slice(start, end)
+Searching a Substring
+str.startsWith(), str.endsWith()
+str.includes(substr, pos)
+str.lastIndexOf(substr, position)
+str.indexOf(substr, pos)
+Accessing a character
+str.toLowerCase(), str.toUpperCase()
+str.at(pos)
+
+length: str.length
+Please note that str.length is a numeric property, not a function. There is no need to add parenthesis after it
+
+Accessing characters : To access characters we can use [] or str.at(pos)
+let str = `Hello`;
+alert( str[0] ); // H
+alert( str.at(0) ); // H
+str.at(-1), returns the last character of the string. This cannot be done using [] notation. It gives undefined
+str.toLowerCase(), str.toUpperCase()
+
+Searching for a substring
+str.indexOf(substr, pos) : 
+It looks for the substr in str, starting from the given position pos, and returns the position where the match was found or -1 if nothing can be found.
+str.lastIndexOf(substr, position) : searches from the end of a string to its beginning.
+str.includes(substr, pos) : 
+returns true/false depending on whether str contains substr within. It’s the right choice if we need to test for the match, but don’t need its position
+str.startsWith(), str.endsWith()
+
+Getting a substring
+str.slice(start, end) :
+Returns the part of the string from start to (but not including) end.
+If there is no second argument, then slice goes till the end of the string: Negative values for start/end are also possible
+
+str.substring(start, end)
+Returns the part of the string between start and end (not including end).
+This is almost the same as slice, but it allows start to be greater than end (in this case it simply swaps start and end values). Negative arguments are (unlike slice) not supported, they are treated as 0.
+
+str.substr(start, length)
+Returns the part of the string from start, with the given length.
+let str = "stringify";
+alert( str.substr(2, 4) ); // 'ring', from the 2nd position get 4 characters. Allows negative start

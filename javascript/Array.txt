@@ -1,0 +1,138 @@
+Array: ordered collection of values
+Accessing elements : using [] or arr.at(pos)
+arr.at() supports negative indexing. 
+The length of array is accessed using arr.length
+Array methods:
+pop() : Removes element from end and returns it.
+shift() : Removes element from start and returns it.
+push() : Adds element at the end of array.
+unshift() : Adds element at the start of array.
+for...in loop is used to iterate over array elements.
+for...of loop gives the indexes of array elements, not the values
+Array are copied by reference
+
+splice() : insert, remove and replace elements
+arr.splice(start[, deleteCount, elem1, ..., elemN])
+It modifies the arr, from the start index, by deleting deleteCount elements and inserting elem1 at that position. Returns the array of deleted elements
+
+arr.slice(start, end) : returns the subarray from start to end(not including)
+It’s similar to a string method str.slice, but instead of substrings it makes subarrays.
+We can also call it without arguments: arr.slice() creates a copy of arr. That’s often used to obtain a copy for further transformations that should not affect the original array.
+
+arr.concat(arr1, arr2, ele1, ele2) : Returns a new array by combining the values
+
+arr.forEach() : takes in a function as argument, and the function is run for each element of the array.
+arr.forEach(function(item, index, arr){
+
+})
+The result of the function (if it returns any) is thrown away and ignored.
+
+Searching in array:
+arr.indexOf(item, from) – looks for item starting from index from, and returns the index where it was found, otherwise -1.
+arr.includes(item, from) – looks for item starting from index from, returns true if found.
+
+arr.find() : If we want to search for a particular object within a array, this method is used.
+arr.find(function(item, index, arr){
+    // if true is returned, item is returned and iteration is stopped
+  // for falsy scenario returns undefined
+})
+The arr.findIndex method has the same syntax, but returns the index where the element was found instead of the element itself. The value of -1 is returned if nothing is found.
+
+The arr.findLastIndex method is like findIndex, but searches from right to left, similar to lastIndexOf.
+
+arr.filter() : The find method stops executing if true is returned. But if there are many matching elements filter is used. It returns the array of all truthy elements
+let results = arr.filter(function(item, index, array) {
+  // if true item is pushed to results and the iteration continues
+  // returns empty array if nothing found
+});
+
+Transform an array
+arr.map() : Returs a new array by running a function on each and every element. Difference with forEach is that, forEach doesnt return anything.
+let result = arr.map(function(item, index, array) {
+  // returns the new value instead of item
+});
+
+arr.sort() : The item of the array are converted to strings and then are sorted. So the result may not be the expected one. The array is sorted inplace.
+To sort the array correctly, sort() takes function as argument.
+Actually, a comparison function is only required to return a positive number to say “greater” and a negative number to say “less”.
+function compare(a,b)
+{
+    if(a > b) return 1;
+    if(a == b) return 0;
+    if(a < b) return -1;
+}
+OR
+function compare(a,b)
+{
+    return a-b;
+}
+arr.sort(compare); OR arr.sort((a,b) => a-b)
+The sort function is called on the array arr, and a compare function is provided (a, b) => a - b. Let's break down how this works:
+
+Compare Function: (a, b) => a - b
+
+The compare function takes two parameters, a and b, representing two elements from the array.
+The subtraction a - b determines the sorting order. If the result is negative, a comes before b; if positive, b comes before a; if zero, the order remains unchanged.
+Sorting Process:
+
+During the sorting process, the sort function uses the compare function to compare pairs of elements in the array.
+If the result of a - b is negative, it means a should come before b, so no change is needed.
+If the result is positive, it means b should come before a, so the elements are swapped.
+If the result is zero, the order remains unchanged.
+Sorting Result:
+
+After the sorting process is complete, the arr array is modified in place, and its elements are sorted in ascending order.
+If you want to sort the array in descending order, you can modify the compare function to b - a:
+
+arr.reverse() : The method arr.reverse reverses the order of elements in arr.
+
+split and join
+str.split(delimiter) : It splits the string into an array by the given delimiter 
+let names = 'Bilbo, Gandalf, Nazgul';
+let arr = names.split(', ');
+The call to split(s) with an empty string would split the string into an array of letters:
+let str = "test";
+alert( str.split('') ); // t,e,s,t
+
+The call arr.join(glue) does the reverse to split. It creates a string of arr items joined by glue between them.
+let arr = ['Bilbo', 'Gandalf', 'Nazgul'];
+let str = arr.join(';'); // glue the array into a string using ;
+alert( str ); // Bilbo;Gandalf;Nazgul
+
+Note:
+When we need to iterate over an array – we can use forEach, for or for..of.
+When we need to iterate and return the data for each element – we can use map.
+
+arr.reduce() : Reurns a single value based on Array. Mostly used to calcualte some of array elements
+arr.reduce( function(accumulator, item, index, arr) {
+
+}, inital_value);
+The value of accumulator, is the result of the previous function call.
+For the first run, the intial value to accumulator can be supplied. If no initial value is given, accumulator takes the first element as intial value, and the function is executed from the second element.
+let arr = [1,2,3,4];
+let res = arr.reduce((accumulator, item) => accumulator + item, 0);
+
+Array.isArray()
+alert(Array.isArray({})); // false
+alert(Array.isArray([])); // true
+
+Note:
+If I want an arrow function to return an object wrap it around normal braces    () => ({})
+
+Array.from()
+It creates arrays from:
+i) iterable objects (objects such as Map and Set, Strings);
+ii) array-like objects (objects with a length property and indexed elements).
+
+array-like object mean:
+let world = {
+    0 : "one",
+    1 : "two",
+    length : 2
+}
+Array.from(arrayLike, mapFn)
+A function to call on every element of the array. If provided, every value to be added to the array is first passed through this function, and mapFn's return value is added to the array instead. The function is called with the following arguments:
+element
+The current element being processed in the array.
+index
+The index of the current element being processed in the array.

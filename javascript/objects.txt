@@ -1,0 +1,117 @@
+Object:
+Object are created using {}.
+Objects contain properties. A property is a key : value pair. Key is a string and value can be anything. 
+Objects are accessed using dot notation or bracket notation.
+delete object.key => delete a property
+"key" in object => to find if a property exist in object
+for...in loop to walk over all the keys in object. for(key in object) {/*executes the body of loop for each key */}
+Shorthand usage:
+function makeUser(name, age) {      |   function makeUser(name, age) {
+  return {                          |      return {
+    name: name,                     |        name, // same as name: name
+    age: age,                       |        age,  // same as age: age
+    // ...other properties          |        // ...
+  };                                |     };
+}                                   |   }
+let user = makeUser("John", 30);
+alert(user.name); // John
+
+Object cloning:
+Object are copied by reference unlike primitive types which are copied by value.
+let user = {name : "Iht"};
+let obj = user;
+user and obj refer to same object only the reference of user object is copied into obj.
+To have a actual copy and not just the reference Object.assign() method is used.
+Object.assign(destination, ...sources)
+it returns the destination object after copying all of the sources object properties into it. If there are any overlapping property in destination they get overwritten.
+let user = {name : "iht"};
+let obj = Object.assign({}, user);
+If the the property of object is such that the value is also an object, then Object.assign will not work, structuredClone is used for such situations
+let user = {
+  name: "John",
+  sizes: {
+    height: 182,
+    width: 50
+  }
+};
+let clone = structuredClone(user);
+
+this = this refers to the current object
+Functions which are object properties are called as methods
+let user = {
+    sayHi : function(){
+        console.log("hello");
+    }
+}
+let user = {
+    sayHi() {
+        console.log("hello");
+    }
+}
+user.sayHi(); OR user["sayHi"]();
+
+Constructor functions: Used to create a multiple objects using the same template.
+They start the name with capital letter. They are called using new operator
+function User(name)
+{
+    this.name = name;
+    this.admin = flase;
+}
+let john = new User("jhon")
+let armin = new User("armin")
+When a function is executed with new, it does the following steps:
+1.A new empty object is created and assigned to this.
+2.The function body executes. Usually it modifies this, adds new properties to it.
+3.The value of this is returned.
+function User(name) {
+  // this = {};  (implicitly)
+
+  // add properties to this
+  this.name = name;
+  this.isAdmin = false;
+
+  // return this;  (implicitly)
+}
+
+Computed properties
+We can use square brackets in an object literal, when creating an object. That’s called computed properties.
+
+let fruit = prompt("Which fruit to buy?", "apple");
+
+let bag = {
+  [fruit]: 5, // the name of the property is taken from the variable fruit
+};
+
+alert( bag.apple ); // 5 if fruit="apple"
+The meaning of a computed property is simple: [fruit] means that the property name should be taken from fruit.
+
+For plain objects, the following methods are available:
+
+Object.keys(obj) – returns an array of keys.
+Object.values(obj) – returns an array of values.
+Object.entries(obj) – returns an array of [key, value] pairs.
+
+map.keys() returns iterable
+Object.keys(obj) returns real array
+
+Transforming objects
+Objects lack many methods that exist for arrays, e.g. map, filter and others.
+
+If we’d like to apply them, then we can use Object.entries followed by Object.fromEntries:
+
+Use Object.entries(obj) to get an array of key/value pairs from obj.
+Use array methods on that array, e.g. map, to transform these key/value pairs.
+Use Object.fromEntries(array) on the resulting array to turn it back into an object.
+let prices = {
+  banana: 1,
+  orange: 2,
+  meat: 4,
+};
+
+let doublePrices = Object.fromEntries(
+  // convert prices to array, map each key/value pair into another pair
+  // and then fromEntries gives back the object
+  Object.entries(prices).map(entry => [entry[0], entry[1] * 2])
+);
+
+alert(doublePrices.meat); // 8
