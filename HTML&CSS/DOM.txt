@@ -1,0 +1,146 @@
+Every html tag is called element node
+Text inside the tag is called text node.
+Every tag is an object.
+document is the parent object.
+
+Navigating the DOM 
+<html> = document.documentElement
+<body> = document.body
+<head> = document.head
+
+There are two terms that we’ll use from now on:
+1. Child nodes (or children) – elements that are direct children. In other words, they are nested exactly in the given one. For instance, <head> and <body> are children of <html> element.
+2. Descendants – all elements that are nested in the given one, including children, their children and so on.
+
+Childnode, firstChild, lastChild
+<childNodes>, <firstChild> and <lastChild>
+The <childNodes> collection lists all child nodes, including text nodes.
+for (let i = 0; i < document.body.childNodes.length; i++) {
+      alert( document.body.childNodes[i] ); // Text, DIV, Text, UL, ..., SCRIPT
+    }
+Properties <firstChild> and <lastChild> give fast access to the first and last children.
+elem.childNodes[0] === elem.firstChild
+elem.childNodes[elem.childNodes.length - 1] === elem.lastChild
+There’s also a special function elem.hasChildNodes() to check whether there are any child nodes.
+
+childNodes looks like an array. But actually it’s not an array, but rather a collection – a special array-like iterable object.
+There are two important consequences:
+1. We can use for..of to iterate over it:
+for (let node of document.body.childNodes) {
+  alert(node); // shows all nodes from the collection
+}
+2. Array methods won’t work, because it’s not an array:
+we can use Array.from to create a “real” array from the collection, if we want array methods:
+alert( Array.from(document.body.childNodes).filter ); // function
+
+Siblings and the parent
+<parentNode>, <nextSibling> and <previousSibling>
+Siblings are nodes that are children of the same parent.
+For instance, here <head> and <body> are siblings:
+The next sibling is in <nextSibling> property, and the previous one – in <previousSibling>.
+
+The parent is available as <parentNode>.
+// parent of <body> is <html>
+alert( document.body.parentNode === document.documentElement ); // true
+
+// after <head> goes <body>
+alert( document.head.nextSibling ); // HTMLBodyElement
+
+// before <body> goes <head>
+alert( document.body.previousSibling ); // HTMLHeadElement
+
+<childNodes> we can see both text nodes, element nodes, and even comment nodes if they exist. But for many tasks we don’t want text or comment nodes. We want to manipulate element nodes that represent tags and form the structure of the page.
+
+The links are similar to those given above, just with Element word inside:
+<children> – only those children that are element nodes.
+<firstElementChild>, <lastElementChild> – first and last element children.
+<previousElementSibling>, <nextElementSibling> – neighbor elements.
+<parentElement> – parent element.
+
+<childNodes>, <firstChild>, <lastChild>, <previousSibling>, <nextSibling>, <parentNode>
+
+Other selector:
+document.querySelector(css selector) // returns single element
+document.querySelectorAll(css) // returns collection of element
+The elem.matches(css) does not look for anything, it merely checks if elem matches the given CSS-selector. It returns true or false.
+The method elem.closest(css) looks for the nearest ancestor that matches the CSS-selector. The elem itself is also included in the search. the method closest goes up from the element and checks each of parents. If it matches the selector, then the search stops, and the ancestor is returned.
+
+The “nodeType” property
+It has a numeric value:
+elem.nodeType == 1 for element nodes,
+elem.nodeType == 3 for text nodes,
+elem.nodeType == 9 for the document object,
+
+nodeName and tagName
+Given a DOM node, we can read its tag name from nodeName or tagName properties
+alert( document.body.nodeName ); // BODY
+alert( document.body.tagName ); // BODY
+
+innerHTML: the contents
+The innerHTML property allows to get the HTML inside the element as a string.
+
+outerHTML: full HTML of the element
+The outerHTML property contains the full HTML of the element. That’s like innerHTML plus the element itself.
+
+nodeValue and data
+The content of a non-element node (text, comment). Other node types, such as text nodes, have their counterpart: nodeValue and data properties. These two are almost the same for practical use, there are only minor specification differences. So we’ll use data, because it’s shorter.
+
+The “hidden” property
+The “hidden” attribute and the DOM property specifies whether the element is visible or not.
+Technically, hidden works the same as style="display:none". But it’s shorter to write.
+ elem.hidden = true;
+
+ CSS styling
+ <>.style.css : css is written in camelCase
+ text.style.fontSize / text.style.backgroundColor.
+ The style property applies an inline css to element
+ The style is applied only if a single element is selected. To apply it to a collection of elements we need to loop thorugh the collection and apply it to individual element
+
+ Creating element
+ To create DOM nodes, there are two methods:
+ document.createElement(tag)// Creates a new element node with the given tag:
+ document.createTextNode(text) //Creates a new text node with the given text:
+ let li = document.createElement('li')
+ let ul = document.querySelector('ul')
+ 
+ //Adding element
+ ul.append(li)
+ Here are more insertion methods, they specify different places where to insert:
+
+node.append(...nodes or strings) – append nodes or strings at the end of node,
+node.prepend(...nodes or strings) – insert nodes or strings at the beginning of node,
+node.before(...nodes or strings) –- insert nodes or strings before node,
+node.after(...nodes or strings) –- insert nodes or strings after node,
+node.replaceWith(...nodes or strings) –- replaces node with the given nodes or strings.
+
+ //Modifing the text
+ .innerText OR .textContent OR .innerHTML
+ innerText = gets the text inside that node
+ textContent = It displays exactly as the text content is present in HTML with indents and new lines
+ innerHTML = if the node contains HTML inside of it, it shows everything, including tags
+
+ li.innerText = 'X-MEN'
+
+ // Adding attributes, ids and classes 
+ li.setAttribute('id', 'main-heading')
+ li.removeAttribure('id')
+ li.getAttribute('id')
+ elem.hasAttribute(name) – checks for existence.
+ elem.attributes is a collection of all attributes.
+
+ //classes
+ the elem.className corresponds to the "class" attribute.
+ If we assign something to elem.className, it replaces the whole string of classes. Sometimes that’s what we need, but often we want to add/remove a single class.
+
+There’s another property for that: elem.classList.
+ li.classList.add('list-items')
+ li.classList.remove('list-items')
+ elem.classList.toggle("class") – adds the class if it doesn’t exist, otherwise removes it.
+ li.classList.contains('list-items') //returns true/false
+
+ //Remove Element
+ li.remove()
+
+ In majority of eventlistener function I see (e) as parameter in function. The e represents the event object. console.log(e) gives details about the event occurred. The interested property is (e.target) which represents the element on which event occurred. 
+
+ To prevent default behaviour of element we use e.preventDefault()

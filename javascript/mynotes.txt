@@ -1,5 +1,5 @@
 1. Code Structure
-Summary: Always make sure to use semicolons at the end of statements. Sometimes javascript can intepret multiple statements as single statement and may produce error
+Summary: Always make sure to use semicolons at the end of statements. Sometimes javascript can interpret multiple statements as single statement and may produce error
 
 2. "use strict"
 Summary: In 2009 the introduction of ES5, introduced new features and modified some old features. In order to keep the old code running as it was, the new changes were disabled by default. The user needs to enable them explicitly to use them, by using the string "use strict" at the top of the script file.

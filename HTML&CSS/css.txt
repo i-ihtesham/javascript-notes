@@ -1,0 +1,61 @@
+Most improtant CSS topics:
+box Model : margin, Padding, width, height
+display : inline, block, inline-block
+position : static, absolute, relative, fixed, sticky
+overflow : visible, hidden, scroll, auto
+Units: %, vw, vh, em, rem
+flexbox
+grid
+
+Selectors:
+1. Element selector div{}
+2. class selector .class{}
+3. Id selector #id{}
+4. Child selector div > p {} // the p tag must be the direct child of div only then style is applied
+5. Descendant selector div p {} // the p tag must be within div tag, not necessary to be direct child
+6. Universal selector *{} // apply style to all elements
+7. Pseudo Selectors p:first-child {} // if p is the first child of any parent apply the style
+a:hover {}
+
+Box Model:
+box-sizing : border-box;
+every content is rendered as a rectangle
+when we set height/width to an element, its applied only to the content of element. The actual height/width is calculated as 
+Total Height = Height + Top Padding + Bottom Padding + Top Border + Bottom Border + Top Margin + Bottom Margin
+Total Width = Width + Left Padding + Right Padding + Left Border + Right Border + Left Margin + Right Margin
+But when we apply the box-sizing property the height/width is applied to entire content, Padding and border(not including margin). So 200px of height inlcudes the combined height of content, Padding and border
+margin-collapse : when the margin between two elements collides, the larger of the two is applied
+
+margin: auto // centers the block level element horizontally. Applies equal left and right margin. It can only be applied to block level elements
+
+hiehgt/width cannot be applied to inline elements<span>
+
+vw/vh : view port width and height applied in percenatge. 100vw means 100% of view-port width
+
+Text can be dynamically inserted within html document by using content property
+Most used css psedo selector :first-child :nth-child :hover ::after ::before
+
+The text-align property is a property of block-level elements, and it is used to control the alignment of inline content within those block-level elements.
+
+inline-block : behaves like a inline element but it is possible to apply custom width and height
+
+position : static, absolute, relative, fixed, sticky
+by default it is static, cant apply top/left/right/bottom on it
+relative : placed with respect to the browser window, gap is maintained
+absolute : placed wrt to nearest positioned ancestor. gap is not maintained.
+fixed : remains fixed for the entire document flow.
+sticky : remains fixed as long it is within the container. once it the scroll is out of the conatiner, it moves up
+
+by default block elements take 100% width of the body
+Units:
+% : width: 50%, takes 50% width of the immediate parent. 
+
+flexbox
+align-content : this property works only when we have multiple lines, i.e flex-wrap is set to wrap.
+for a single line of content this property has no affect
+
+flex-conatiner:
+display, flex-direction, justify-content, align-items, align-content, flex-wrap, flex-flow
+
+flex-items:
+order, flex-grow, flex-shrink, flex-bassis(sets width of flex-item), flex, align-self(align in cross-axis, overrides the align-item of conatiner)

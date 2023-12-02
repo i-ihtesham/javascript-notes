@@ -103,7 +103,7 @@ Note:
 When we need to iterate over an array – we can use forEach, for or for..of.
 When we need to iterate and return the data for each element – we can use map.
 
-arr.reduce() : Reurns a single value based on Array. Mostly used to calcualte some of array elements
+arr.reduce() : Returns a single value based on Array. Mostly used to calcualte sum of array elements
 arr.reduce( function(accumulator, item, index, arr) {
 
 }, inital_value);
