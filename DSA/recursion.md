@@ -45,3 +45,6 @@ Substring
 
 Subseqence = 2^n
 Substring = n*(n+1)/2
+
+To convert a char to int :
+'6' != 6, when such comparison happends '6' is converted to its ASCII value which is 54, so the comparison happens as 54 == 6, which is not true, so to convert the char to integer subtract it from '0' : ('6' - '0') == 6, this will return true, because ASCII value of '0' is 48.
