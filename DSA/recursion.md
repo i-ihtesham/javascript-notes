@@ -48,3 +48,15 @@ Substring = n*(n+1)/2
 
 To convert a char to int :
 '6' != 6, when such comparison happends '6' is converted to its ASCII value which is 54, so the comparison happens as 54 == 6, which is not true, so to convert the char to integer subtract it from '0' : ('6' - '0') == 6, this will return true, because ASCII value of '0' is 48.
+
+Second pattern of recursion:
+Level and Options
+Example: print Subsequence.
+In the level and options method, each level has a question and answer. The question is to solved. We reach from one level to another by exploring different options. The answer is printed in the base case. 
+In Faith and Expectation method, we keep faith that the recursion will return us the answer and we do some work to link it with expectation.
+Im level-option method, we have several options and we pick each of it one by one. In each step we solve some part of question, and the rest of the question is solved in the next level.
+
+Two types of recursion call:
+smart call, simple base case
+stupid call, smart base case
+Example : print Maze paths
