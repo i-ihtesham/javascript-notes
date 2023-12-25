@@ -6,7 +6,7 @@ In dp, you can solve the problem in two ways:
 In memoization, you solve a problem by recursively breaking it down into smaller subproblems, but you store the results of each subproblem in a data structure (usually an array or a map) so that you don't recompute the same subproblem multiple times.
 The below code is for climbing stairs. You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
 For the mem code, "n" represents question, "qb" is the question-bank, "ans" is the answer to problem n. Everytime "ans" is solved, it stored in "qb" against its position "n". The size of "qb" vector is (n+1). Since we require the indices to range from 0...n, we take the array size till (n+1).
-    int solveMem(int n, vector<int> qb)
+int solveMem(int n, vector<int> qb)
     {
         if( n == 0) return 1;
         else if( n < 0) return 0;
